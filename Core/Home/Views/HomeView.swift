@@ -13,39 +13,57 @@ struct HomeView: View {
     @State private var showPortfolio: Bool = false // To Animate right
     @State private var showPortfolioView: Bool = false // To Show portfolio Sheet
     
+    @State private var selectedCoin: CoinModel? = nil
+    @State private var showDetailView: Bool = false
+    
+    
     var body: some View {
-        ZStack {
-            Color.theme.background
-                .ignoresSafeArea()
-                .sheet(isPresented: $showPortfolioView) {
-                    PortfolioView()
-                        .environmentObject(vm)
+        NavigationStack {
+            ZStack {
+                Color.theme.background
+                    .ignoresSafeArea()
+                    .sheet(isPresented: $showPortfolioView) {
+                        PortfolioView()
+                            .environmentObject(vm)
+                    }
+                
+                // Content Layer:
+                VStack {
+                    homeHeader
+                    
+                    HomeStatsView(showPortfolio: $showPortfolio)
+                    
+                    SearchBarView(searchText: $vm.searchText)
+                    
+                    columnTitle
+                    
+                    if !showPortfolio {
+                        allCoinsList
+                            .transition(.move(edge: .leading))
+                    }
+                    
+                    if showPortfolio {
+                        portfolioCoinsList
+                            .transition(.move(edge: .trailing))
+                    }
+                    
+                    Spacer(minLength: 0)
                 }
-            
-            // Content Layer:
-            VStack {
-                homeHeader
-                
-                HomeStatsView(showPortfolio: $showPortfolio)
-                
-                SearchBarView(searchText: $vm.searchText)
-                
-                columnTitle
-                
-                if !showPortfolio {
-                    allCoinsList
-                        .transition(.move(edge: .leading))
-                }
-               
-                if showPortfolio {
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
-                }
-                
-                Spacer(minLength: 0)
+            }
+            /*
+             .background(
+                 NavigationLink(destination: DetailView(coin: selectedCoin)),
+                                isActive: $showDetailView,
+                                label: { EmptyView() })
+             )
+             */
+            .navigationDestination(isPresented: $showDetailView) {
+                DetailView(coin: selectedCoin ?? DeveloperPreview.instance.coin)
             }
         }
+ 
     }
+    
 }
 
 #Preview {
@@ -89,24 +107,40 @@ extension HomeView {
         .padding(.horizontal)
     }
     
+    
+    // Coin list for the Home View:
     private var allCoinsList: some View {
         List{
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
+                // Instead of using a NavigationLink we are using .onTapGesture{} for lazy loading:
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
         }
         .listStyle(.plain)
     }
     
+    // Coin list for the Portfolio View:
     private var portfolioCoinsList: some View {
         List{
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
         }
         .listStyle(.plain)
+    }
+    
+    private func segue(coin: CoinModel) {
+        // Add logic for segueing to the DetailView() for the tapped coin
+        selectedCoin = coin
+        showDetailView.toggle()
     }
     
     private var columnTitle: some View {
