@@ -96,7 +96,29 @@ class HomeViewModel: ObservableObject {
         let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
         let volume = StatisticModel(title: "24h Volume", value: data.volume)
         let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcDominance)
-        let portfolio = StatisticModel(title: "Portfolio Value", value: "$0.00", percentageChange: 0)
+        
+        let portfolioValue = portfolioCoins
+            .map({ $0.currentHoldingsValue})
+            .reduce(0, +)
+        
+        let previousValue = portfolioCoins
+            .map{ coin -> Double in
+                let currentValue = coin.currentHoldingsValue
+                let percentChange = (coin.priceChangePercentage24H ?? 0) / 100 // Say percentChange was 25% -> .25 -. 0.25(thats why we divide by 100)
+                let previousValue = currentValue / (1 + percentChange)
+                // If the current value is 110, then the logic works like this: 110 / (1 + 0.1) = 100
+                return previousValue
+            }
+            .reduce(0, +)
+        
+        let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
+        
+        
+        let portfolio = StatisticModel(
+            title: "Portfolio Value",
+            value: portfolioValue.asCurrencyWith2Decimals(),
+            percentageChange: percentageChange
+        )
         stats.append(contentsOf: [
             marketCap,
             volume,
