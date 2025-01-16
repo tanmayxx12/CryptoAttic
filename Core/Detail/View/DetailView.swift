@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct DetailView: View {
-    let coin: CoinModel
+    @StateObject var vm: DetailViewModel
     
     init(coin: CoinModel) {
-        self.coin = coin
+        // We need to initialize the @StateObject vm from the init like this:
+        _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
         print("Initializing Detail View for: \(coin.name)")
     }
     
     var body: some View {
-        Text(coin.name)
+        Text("Hello")
     }
 }
 
