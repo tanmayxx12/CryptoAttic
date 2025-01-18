@@ -13,6 +13,7 @@ struct SettingsView: View {
     let coinGeckoURL = URL(string: "https://www.coingecko.com")!
     let githubURL = URL(string: "https://github.com/tanmayxx12")!
     let linkedInURL = URL(string: "https://www.linkedin.com/in/tanmay-roy-462772245/")!
+    let xURL = URL(string: "https://x.com/tanmayxx_")!
     let nicksLinkedInURL = URL(string: "https://www.linkedin.com/in/nicholassarno/")!
     let nicksWebsiteURL = URL(string: "https://www.swiftful-thinking.com/")!
     
@@ -127,32 +128,50 @@ extension SettingsView {
     private var personalSection: some View {
         Section("Personal Details") {
             VStack {
-                Text("If you'd like to see more of my work or learn more about my professional journey, feel free to visit:")
-                    .font(.callout)
-                    .fontWeight(.medium)
-                    .foregroundStyle(Color.theme.accent)
+                Text("""
+                     Hi! I'm a self-taught iOS developer with a background in business, transitioning into
+                     the exciting world of app development. My journey has been fueled by curiosity,
+                     persistence, and a passion for creating meaningful digital experiences. 
+                     This application is one of my first steps into building projects that bring ideas to
+                     life, and I'm thrilled to share it with you.
+                     If you'd like to learn more about me or connect, feel free to visit my socials: 
+                     """)
+                .multilineTextAlignment(.leading)
+                .font(.callout)
+                .fontWeight(.medium)
+                .foregroundStyle(Color.theme.accent)
                 
                 HStack(spacing: 50){
                     // Github:
-                    Link(destination: githubURL) {
+                    VStack {
                         Image("githublogo")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 60, height: 60)
+                            .frame(width: 50, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
+                        Link("Github", destination: githubURL)
+                            .tint(.blue)
                     }
-                    
-                    Spacer()
-                    
-                    // MARK: Fix the issue (opens github's link on tapping linkedin logo)
-                    // LinkedIn
-                    Link(destination: linkedInURL) {
+                    VStack {
                         Image("linkedinLogo")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 80, height: 80)
+                            .frame(width: 50, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
+                        Link("LinkedIn", destination: linkedInURL)
+                            .tint(.blue)
                     }
+                  
+                    VStack {
+                        Image("xLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                        Link("X", destination: xURL)
+                            .tint(.blue)
+                    }
+                    
                 }
             }
         }
