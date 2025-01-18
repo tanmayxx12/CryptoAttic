@@ -65,21 +65,11 @@ extension SettingsView {
                 
             }
             .padding(.vertical, 5)
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Links")
-                        .padding(.bottom, 4)
-                    Image(systemName: "link")
-                }
-                .font(.headline)
-                
-                HStack {
-                    Link("SwiftfulThinking", destination: nicksWebsiteURL)
-                    Spacer()
-                    Link("Nick's LinkedIn", destination: nicksLinkedInURL)
-                }
+            
+            Link("SwiftfulThinking", destination: nicksWebsiteURL)
                 .tint(.blue)
-            }
+            Link("Nick's LinkedIn", destination: nicksLinkedInURL)
+                .tint(.blue)
         }
     }
     
@@ -129,7 +119,7 @@ extension SettingsView {
         Section("Personal Details") {
             VStack {
                 Text("""
-                     Hi! I'm a self-taught iOS developer with a background in business, transitioning into
+                     I'm a self-taught iOS developer with a background in business, transitioning into
                      the exciting world of app development. My journey has been fueled by curiosity,
                      persistence, and a passion for creating meaningful digital experiences. 
                      This application is one of my first steps into building projects that bring ideas to
@@ -142,38 +132,36 @@ extension SettingsView {
                 .foregroundStyle(Color.theme.accent)
                 
                 HStack(spacing: 50){
-                    // Github:
-                    VStack {
-                        Image("githublogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                        Link("Github", destination: githubURL)
-                            .tint(.blue)
-                    }
-                    VStack {
-                        Image("linkedinLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                        Link("LinkedIn", destination: linkedInURL)
-                            .tint(.blue)
-                    }
-                  
-                    VStack {
-                        Image("xLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                        Link("X", destination: xURL)
-                            .tint(.blue)
-                    }
+                    // Github
+                    Image("githublogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                     
+                    // LinkedIn
+                    Image("linkedinLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                    
+                    // X
+                    Image("xLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
             }
+            Link("Github", destination: githubURL)
+                .tint(.blue)
+            Link("LinkedIn", destination: linkedInURL)
+                .tint(.blue)
+            Link("X(formerly Twitter)", destination: xURL)
+                .tint(.blue)
         }
     }
 }
+
+
