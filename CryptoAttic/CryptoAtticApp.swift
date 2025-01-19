@@ -11,6 +11,7 @@ import SwiftUI
 struct CryptoAtticApp: App {
     // The instance of HomeViewModel is given here so that to make it an environment object which can be called from any view in the app
     @StateObject private var vm = HomeViewModel()
+    @State private var showLaunchView: Bool = true
     
     init() {
         // This is being used to convert the NavigationTitle's .foregroundStyle since it cant be changed with modifiers:
@@ -20,11 +21,21 @@ struct CryptoAtticApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack{
-                HomeView()
-                    .navigationBarHidden(true)
+            ZStack {
+                NavigationStack{
+                    HomeView()
+                        .navigationBarHidden(true)
+                }
+                .environmentObject(vm)
+                
+                if showLaunchView {
+                    LaunchView(showLaunchView: $showLaunchView)
+                        .zIndex(1) // Ensures LaunchView is on top
+                        .transition(.opacity) // Smooth fade-out transition
+                }
+                
             }
-            .environmentObject(vm)
+          
         }
     }
 }

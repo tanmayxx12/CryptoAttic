@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1102F7DE2CFDC9CC00B4E085 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1102F7DC2CFDC9CC00B4E085 /* PortfolioContainer.xcdatamodeld */; };
 		1102F7E02CFDCA3D00B4E085 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102F7DF2CFDCA3D00B4E085 /* PortfolioDataService.swift */; };
+		1115B2512D3D1AD400D8814F /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1115B2502D3D1AD400D8814F /* LaunchView.swift */; };
 		11214D352D3A5D67009F34D6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11214D342D3A5D67009F34D6 /* SettingsView.swift */; };
 		1134A2302CFA320C00FB6F8D /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134A22F2CFA320C00FB6F8D /* StatisticModel.swift */; };
 		1134A2322CFA33A200FB6F8D /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134A2312CFA33A200FB6F8D /* StatisticView.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		1102F7DD2CFDC9CC00B4E085 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		1102F7DF2CFDCA3D00B4E085 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
+		1115B2502D3D1AD400D8814F /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		11214D342D3A5D67009F34D6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1134A22F2CFA320C00FB6F8D /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
 		1134A2312CFA33A200FB6F8D /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1115B24E2D3D1AB600D8814F /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				1115B24F2D3D1AC400D8814F /* View */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		1115B24F2D3D1AC400D8814F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1115B2502D3D1AD400D8814F /* LaunchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		11214D302D3A5D09009F34D6 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +214,7 @@
 		116AFB5D2CEF385500C4BCF6 /*  Components */ = {
 			isa = PBXGroup;
 			children = (
+				1115B24E2D3D1AB600D8814F /* Launch */,
 				11AFD0752CF0A3BA0056DF30 /* CoinImage */,
 				116AFB5E2CEF386800C4BCF6 /* CircleButton */,
 				116320A52CF9E4930014679A /* SearchBarView.swift */,
@@ -374,6 +393,7 @@
 				116AFB602CEF387A00C4BCF6 /* CircleButtonView.swift in Sources */,
 				116AFB562CEF34A900C4BCF6 /* Color.swift in Sources */,
 				116320A62CF9E4930014679A /* SearchBarView.swift in Sources */,
+				1115B2512D3D1AD400D8814F /* LaunchView.swift in Sources */,
 				11D2BACE2D37CB8000D31990 /* DetailView.swift in Sources */,
 				11C9E7272D37AF0100162B86 /* HapticManager.swift in Sources */,
 				11AFD0742CF09B220056DF30 /* NetworkingManager.swift in Sources */,
