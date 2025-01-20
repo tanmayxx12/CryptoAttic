@@ -1,13 +1,12 @@
-CryptoAttic is a cryptocurrency portfolio tracker app that allows users to easily manage and monitor their crypto investments.
-It provides real-time market data, including prices, market cap, trading volume, and more. The app supports multiple cryptocurrencies and offers detailed analytics, 
-making it easy to track portfolio performance.
+# CryptoAttic
+
+CryptoAttic is a modern cryptocurrency tracking app developed entirely in Swift and SwiftUI. Designed with the MVVM architecture, this app ensures clean, maintainable, and scalable code. CryptoAttic leverages Combine for real-time data fetching and CoreData for offline data persistence, delivering a seamless and responsive user experience.
 <br>
-<br>
-<b> Why the project is useful </b>
-<br>
-With the growing popularity of cryptocurrencies, managing a diverse portfolio can be complex and time-consuming. CryptoAttic simplifies this process by offering a unified 
-platform to track your holdings, see their current value, and get up-to-date market information. It’s designed for both casual users and active traders who want to stay informed 
-and make smart investment decisions.
-<br>
-<br>
-<b> Tanmay </b>
+
+## Features
+
+- Real-time cryptocurrency data fetching using Combine.
+- Offline data persistence using CoreData.
+- Modern and responsive UI designed with SwiftUI.
+- Advanced search and filtering options.
+- Clean and maintainable MVVM architecture.
