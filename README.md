@@ -2,11 +2,7 @@
 
 CryptoAttic is a modern cryptocurrency tracking app developed entirely in Swift and SwiftUI. Designed with the MVVM architecture, this app ensures clean, maintainable, and scalable code. CryptoAttic leverages Combine for real-time data fetching and CoreData for offline data persistence, delivering a seamless and responsive user experience.
 
-
-[HomeView](Assets/HomeView.PNG)
-[PortfolioView](Assets/PortfolioView.PNG)
-[EditPortfolioView](Assets/EditPortfolioView.PNG)
-[DetailView](Assets/DetailView.PNG)
+![screenshot](https://github.com/tanmayxx12/CryptoAttic/blob/82d7a018b4566b955da36507e212185616f907c4/CryptoAtticReadmeSS.png)
 
 
 ## Features
